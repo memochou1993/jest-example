@@ -59,3 +59,27 @@ test('the total revenue is 765,200 if all the products sold without discount', (
 
   expect(actual).toStrictEqual(expected);
 });
+
+test('the top 3 highest discounted product brand are Apple, OPPO and Boho Decor',  () => {
+  const actual = products
+    .sort((a, b) => b.discountPercentage - a.discountPercentage)
+    .map((p) => p.brand)
+    .slice(0, 3);
+  const expected = ['Apple', 'OPPO', 'Boho Decor'];
+
+  expect(actual).toStrictEqual(expected);
+});
+
+test('the number of product brands is 28',  () => {
+  const brands = {};
+  products
+    .forEach((p) => {
+      if (!brands[p.brand]) {
+        brands[p.brand] = true;
+      }
+    });
+  const actual = Object.keys(brands).length;
+  const expected = 28;
+
+  expect(actual).toStrictEqual(expected);
+});
