@@ -22,12 +22,11 @@ test('there is a product which description says "no side effects"', () => {
   expect(actual).toStrictEqual(expected);
 });
 
-test('the number of Apple smartphones is 2', () => {
+test('the number of smartphones is 5', () => {
   const actual = products
-    .filter((product) => String(product.brand).toUpperCase() === 'APPLE')
     .filter((product) => product.category === 'smartphones')
     .length;
-  const expected = 2;
+  const expected = 5;
 
   expect(actual).toStrictEqual(expected);
 });
