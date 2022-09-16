@@ -1,83 +1,56 @@
-const products = require('./products');
+const practice = require('.');
 
-test('all product prices are less than 5000', () => {
-  const actual = products
-    .every((product) => product.price < 5000);
+test('case9 should determine that all products have one image at least', () => {
+  const actual = practice.case9();
   const expected = true;
 
   expect(actual).toStrictEqual(expected);
 });
 
-test('all products have one image at least', () => {
-  const actual = products.every((product) => product.images.length > 0);
+test('case10 should determine that there is a product which description says "no side effects"', () => {
+  const actual = practice.case10();
   const expected = true;
 
   expect(actual).toStrictEqual(expected);
 });
 
-test('there is a product which description says "no side effects"', () => {
-  const actual = products.some((product) => product.description.includes('no side effects'));
-  const expected = true;
-
-  expect(actual).toStrictEqual(expected);
-});
-
-test('the number of smartphones is 5', () => {
-  const actual = products
-    .filter((product) => product.category === 'smartphones')
-    .length;
+test('case11 should get the number of smartphones', () => {
+  const actual = practice.case11();
   const expected = 5;
 
   expect(actual).toStrictEqual(expected);
 });
 
-test('the products get over 4.9 rating are fauji and Golden', () => {
-  const actual = products
-    .filter((product) => product.rating > 4.9)
-    .map((product) => ({
-      brand: product.brand,
-    }));
+test('case12 should get the brand of products which get over 4.9 rating', () => {
+  const actual = practice.case12();
   const expected = [{ brand: 'fauji' }, { brand: 'Golden' }];
 
   expect(actual).toStrictEqual(expected);
 });
 
-test('the only product of Dry Rose is "Gulab Powder 50 Gram"', () => {
-  const actual = products
-    .find((product) => product.brand === 'Dry Rose')
-    .title;
+test('case13 should get the only product of Dry Rose', () => {
+  const actual = practice.case13();
   const expected = 'Gulab Powder 50 Gram';
 
   expect(actual).toStrictEqual(expected);
 });
 
-test('the total revenue is 765,200 if all the products sold without discount', () => {
-  const actual = products
-    .reduce((a, b) => a + b.price * b.stock, 0);
+test('case14 should get the total revenue when all the products sold without discount', () => {
+  const actual = practice.case14();
   const expected = 765200;
 
   expect(actual).toStrictEqual(expected);
 });
 
-test('the top 3 highest discounted product brand are Apple, OPPO and Boho Decor',  () => {
-  const actual = products
-    .sort((a, b) => b.discountPercentage - a.discountPercentage)
-    .map((p) => p.brand)
-    .slice(0, 3);
+test('case15 should get the top 3 highest discounted product brands',  () => {
+  const actual = practice.case15();
   const expected = ['Apple', 'OPPO', 'Boho Decor'];
 
   expect(actual).toStrictEqual(expected);
 });
 
-test('the number of product brands is 28',  () => {
-  const brands = {};
-  products
-    .forEach((p) => {
-      if (!brands[p.brand]) {
-        brands[p.brand] = true;
-      }
-    });
-  const actual = Object.keys(brands).length;
+test('case16 should get the number of product brands',  () => {
+  const actual = practice.case16();
   const expected = 28;
 
   expect(actual).toStrictEqual(expected);
